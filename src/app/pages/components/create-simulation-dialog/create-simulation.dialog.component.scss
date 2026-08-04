@@ -1,0 +1,23 @@
+input {
+  background-color: #7ba2de !important;
+  border-bottom-color: #fff !important;
+  width: 17em !important;
+  border-bottom-width: 3px !important;
+}
+input::-webkit-input-placeholder {
+  color: #fff !important;
+}
+input:-moz-placeholder {
+  color: #fff !important;
+}
+.description-label {
+  font-weight: bold;
+}
+
+.invalid-feedback {
+  display: block;
+}
+
+.modal-content {
+  background-color: #7ba2de !important;
+}

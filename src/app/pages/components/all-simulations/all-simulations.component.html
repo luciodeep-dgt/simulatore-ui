@@ -1,0 +1,41 @@
+<div class="tabellaSimulazioni">
+  <div class="pl-5 pt-5 box-bianco">
+    <div class="row d-flex">
+      <div class="col-md-6 mr-auto simulation-title">
+        <h3>{{ 'HOME.ALL_SIMULATIONS.TITLE' | translate }}</h3>
+      </div>
+      <div class="col-md-6 mr-auto row" class="form-group" style="margin-bottom: 0;">
+          <div class="form-group ricerca">
+            <input type="text" [(ngModel)]="searchText" #searchInput="ngModel" class="form-control" id="cercaInputText">
+            <label class="form-control-placeholder" for="cercaInputText">
+              <svg class="icon" style="width:22px; height:22px;">
+                <use xlink:href="assets/bootstrap-italia/dist/svg/sprite.svg#it-search"></use>
+              </svg> {{ 'HOME.ALL_SIMULATIONS.CERCA' | translate }}
+            </label>
+          </div>
+          <div class="simulation" *ngIf="simulationsStatusOptions$ | async as options" >
+            <div class="bootstrap-select-wrapper" *ngIf="options && options.length > 0">
+              <label>{{ 'HOME.ALL_SIMULATIONS.STATO_SIMULAZIONE_INPUT' | translate }}</label>
+              <p-dropdown [options]="options" [(ngModel)]="searchStatus" (onChange)="onStatusChange()"></p-dropdown>
+            </div>
+          </div>
+      </div>
+    </div>
+    <div style="position: relative">
+      <ng-container *ngIf="simulations$ | async as simulations">
+        <app-simulations-list #table [simulations]="simulations" 
+          (action)="onAction($event)" (pageChange)="onPageChange($event)">
+        </app-simulations-list>
+      </ng-container>
+      <ngx-ui-loader [loaderId]="'all-simulations'" [overlayColor]="'rgba(255,255,255,0.3)'"></ngx-ui-loader>
+    </div>
+  </div>
+</div>
+
+
+<p-confirmDialog #cd>
+  <p-footer>
+    <button class="btn btn-primary btn-sm" type="button" (click)="cd.accept()">Si</button>
+    <button class="btn btn-outline-secondary btn-sm" type="button" data-dismiss="modal" (click)="cd.reject()">No</button>
+  </p-footer>
+</p-confirmDialog>

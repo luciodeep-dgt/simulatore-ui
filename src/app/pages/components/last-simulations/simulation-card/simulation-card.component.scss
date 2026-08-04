@@ -1,0 +1,22 @@
+.card-wrapper {
+  height: 275px;
+}
+.card.card-bg {
+  box-shadow: none;
+}
+.card-description {
+  font-size: 1.3em;
+  color: #435a70;
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1399px){
+  .card-description {
+    font-size: 1.3em;
+  }
+}
+@media screen and (min-width: 1400px){
+  .card-description {
+    margin-top: 10px;
+    font-size: 2em;
+  }
+}

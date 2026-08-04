@@ -1,0 +1,11 @@
+.action {
+    cursor: pointer;
+}
+
+.disabled {
+    pointer-events: none;
+
+    svg {
+        fill: gray;
+    }
+}

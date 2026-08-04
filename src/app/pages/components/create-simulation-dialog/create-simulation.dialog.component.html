@@ -1,0 +1,35 @@
+<div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-content">
+    <div class="pl-5 pr-5">
+      <div class="modal-header bluPolvere">
+        <div class="sfondoModale">
+          <img src="assets/bootstrap-italia/dist/img/new-simulation-modal.svg" alt="" class="">
+        </div>
+        <h4 class="modal-title text-white">{{ 'HOME.CREATION_DIALOG.TITLE' | translate }}</h4>
+      </div>
+      <div class="modal-body  text-white bluPolvere">
+        <div class="text-white bluPolvere p-2 description-label">{{ 'HOME.CREATION_DIALOG.DESCRIZIONE' | translate }}
+        </div>
+        <div class="form-group">
+          <input type="text" #description="ngModel" ngModel class="form-control text-white" required
+            id="nomeSimulazione" placeholder="Nome simulazione">
+          <p *ngIf="!formSubmitted" class="small font-weight-light pt-2 pl-2">
+            {{ 'HOME.CREATION_DIALOG.INPUT_HINT' | translate }}
+          </p>
+          <p *ngIf="description.errors?.required && formSubmitted" class="small invalid-feedback pt-2 pl-2">
+            {{ 'HOME.CREATION_DIALOG.INPUT_ERROR' | translate }}
+          </p>
+        </div>
+      </div>
+      <div class="modal-footer bluPolvere justify-content-start">
+        <button class="btn btn-sm text-white" type="button" (click)="onCloseDialog()"
+          style="border:1px solid #fff;">{{ 'HOME.CREATION_DIALOG.ANNULLA_BUTTON' | translate }}</button>
+        <button class="btn bg-white btn-sm p3" (click)="onCreate(description.value)" role="button"
+          style="border: 1px solid #fff; padding-left: 32px; padding-right: 32px;">{{ 'HOME.CREATION_DIALOG.CREA_BUTTON' | translate }}</button>
+        <!--
+     <button class="btn bg-white btn-sm p3" type="button" style="border: 1px solid #fff; padding-left: 32px; padding-right: 32px;">Crea</button>
+    -->
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<div class="col-11 offset-md-1 box-blu rounded">
+  <div class="card card-wrapper white-text">
+    <div class=" card-img no-after">
+      <div class="img-responsive-wrapper">
+        <div class="img-responsive" *ngIf="headerImage">
+          <figure class="img-wrapper">
+            <img [src]="headerImage" title="img title" alt="imagealt" class="imageAddSimulation">
+          </figure>
+        </div>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"><b>{{ title }}</b></h5>
+        <p class="card-text">
+          <ng-content></ng-content>
+        </p>
+        <div style="margin:auto">
+          <button class="align-middle btn btn-icon mb-2" (click)="onClickNext()">
+            <span class="text">{{ buttonText }}</span>
+            <!-- <svg class="pl-1 icon icon-sm" fill="white">
+              <use xlink:href="assets/bootstrap-italia/dist/svg/sprite.svg#it-arrow-right"></use>
+            </svg> -->
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

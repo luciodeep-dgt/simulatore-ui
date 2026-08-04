@@ -1,0 +1,54 @@
+<p-table #table [value]="simulations.items"> <!-- [customSort]="true" (sortFunction)="sort($event)"-->
+  <ng-template pTemplate="header" let-columns>
+    <tr>
+      <th>{{ 'HOME.ALL_SIMULATIONS.TABLE_ID' | translate}}</th>
+      <th colspan="2">{{ 'HOME.ALL_SIMULATIONS.TABLE_DESCRIZIONE' | translate}}</th>
+      <th>{{ 'HOME.ALL_SIMULATIONS.TABLE_AUTHOR' | translate}}</th>
+      <th>{{ 'HOME.ALL_SIMULATIONS.TABLE_DATA' | translate}}</th> <!--[pSortableColumn]="'dataCreazione'" <p-sortIcon [field]="'dataCreazione'"></p-sortIcon>-->
+      <th>{{ 'HOME.ALL_SIMULATIONS.TABLE_STATO' | translate}}</th> <!--[pSortableColumn]="'stato'" <p-sortIcon [field]="'stato'"></p-sortIcon>-->
+      <th> </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-simulation let-columns="columns">
+    <tr>
+      <td>
+        <div fxLayout="row" fxLayoutAlign="start center">
+          {{ simulation.id }} <app-info-popup class="ml-4" [simulation]="simulation"></app-info-popup>
+        </div>
+      </td>
+      <td colspan="2" style="padding: 20px">{{ simulation.descrizione }}</td>
+      <td>{{ simulation.utenteCreazione }}</td>
+      <td>{{ simulation.dataCreazione | date: 'dd/MM/yy' }}</td>
+      <td>
+        <div class="chip chip-simple {{ getStatusStyleChips(simulation) }}">
+          <span class="chip-label"
+            [ngClass]="getStatusStyleChips(simulation, true)">{{ simulation.stato.descrizione }}</span>
+        </div>
+      </td>
+      <td class="text-center">
+
+        <span class="mr-2" [pTooltip]="'Vai al dettaglio'" >
+          <svg class="icon action" (click)="action.emit({ type: 'view', row: simulation.id })" >
+            <use xlink:href="assets/bootstrap-italia/dist/svg/sprite.svg#it-arrow-right" fill="blue"></use>
+          </svg>
+        </span>
+        <span class="mr-2" [pTooltip]="'Archivia la simulazione'" >
+            <svg class="icon action" [ngClass]="{ 'disabled': (simulation.stato?.codice === 'ARC' || simulation.stato?.codice === 'VAL')}" 
+            (click)="action.emit({ type: 'delete', row: simulation.id })">
+            <use xlink:href="assets/bootstrap-italia/dist/svg/sprite.svg#it-box" fill="blue"></use>
+          </svg>
+        </span>
+
+      </td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="emptymessage" let-columns>
+    <tr>
+      <td colspan="7" class="text-center">
+        <p>{{ 'HOME.ALL_SIMULATIONS.TABLE_NOT_FOUND' | translate}}</p>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
+<p-paginator [rows]="simulations.limit" [totalRecords]="simulations.totalCount" 
+  [first]="simulations.offset * simulations.limit" (onPageChange)="paginate($event)"></p-paginator>

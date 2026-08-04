@@ -1,0 +1,22 @@
+<div class="pl-5 box-bianco last-simulations-container">
+  <h3 class="pt-3">{{ 'HOME.SIMULATION_CARD.TITLE_ULTIME_SIMULAZIONI' | translate }}</h3>
+  <div class="row" *ngIf="lastSimulations$ | async as lastSimulations; else loadingOrError">
+    <div class="row col-12 elenco" *ngIf="lastSimulations.items && lastSimulations.items.length > 0; else notFound">
+      <div class="col-12 col-md-5" [ngClass]="{'offset-md-1': (index+1)%2 === 0}" *ngFor="let simulation of lastSimulations.items; let index = index">
+        <app-simulation-card [simulation]="simulation">
+        </app-simulation-card>
+      </div>
+    </div>
+    <ng-template #notFound>
+      <app-info-card title="{{ 'HOME.SIMULATION_CARD.SIMULAZIONI_NON_CREATE' | translate }}">
+        <span [innerHTML]="'HOME.SIMULATION_CARD.ULTIME_SIMULAZIONI_HINT' | translate "></span>
+      </app-info-card>
+    </ng-template>
+  </div>
+  <ng-template #loadingOrError>
+    <app-info-card *ngIf="error" title="Errore">
+      {{ 'ERROR.ERRORE_RIPROVA' | translate }}
+    </app-info-card>
+  </ng-template>
+  <ngx-ui-loader [loaderId]="'last-simulations'" [overlayColor]="'rgba(255,255,255,0.3)'"></ngx-ui-loader>
+</div>

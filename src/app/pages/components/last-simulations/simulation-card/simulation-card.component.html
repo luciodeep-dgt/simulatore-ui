@@ -1,0 +1,44 @@
+<div class="card-wrapper">
+  <div class="card card-bg">
+    <div class="card-body">
+      <div class="row justify-content-between">
+        <div class="col-6 card-subtitle">{{'DATA_CREAZIONE' | translate}}: <span
+            style="font-weight:800; color: grey;">{{ simulation.dataCreazione | date:'dd' }}</span>
+          <p class="font-weight-bold" style="color: grey;">{{ simulation.dataCreazione | date:'MMM yyyy' }}</p>
+        </div>
+        <div class="col-auto">
+          <div class="chip chip-simple {{ getStatusStyleChips(simulation) }}">
+            <span class="chip-label" [ngClass]="getStatusStyleChips(simulation, true)">{{ simulation.stato.descrizione }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-start" style="align-items: center;">
+        <p class="card-text" style="margin-bottom: 0;">Id: <span style="font-weight: bold;">{{ simulation.id }}</span></p>
+        <app-info-popup class="ml-4" [simulation]="simulation"></app-info-popup>
+      </div>
+      <div class="row justify-content-start">
+        <p class="card-title card-description">
+          {{ simulation.descrizione | ellipsis:100 }}
+        </p>
+      </div>
+      <div class="row justify-content-between">
+        <div class="">
+          <a class="read-more text-decoration-none" 
+            routerLink="/simulazione/{{simulation.id}}" skipLocationChange>
+            <span class="text">{{ 'DETTAGLIO' | translate }}</span>
+            <svg class="icon" fill="blue">
+              <use xlink:href="assets/bootstrap-italia/dist/svg/sprite.svg#it-arrow-right"></use>
+            </svg>
+          </a>
+        </div>
+        <div class="" style="position:absolute; bottom: 1em; right: 1em;" *ngIf="false">
+          <a class="" href="#">
+            <svg class="icon icon-sm" fill="blue">
+              <use xlink:href="assets/bootstrap-italia/dist/svg/sprite.svg#it-download"></use>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

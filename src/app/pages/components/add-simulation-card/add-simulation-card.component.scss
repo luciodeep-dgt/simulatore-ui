@@ -1,0 +1,58 @@
+.avvia {
+    position: relative;
+}
+.avvia:hover svg{
+    fill: #19191a;
+}
+.avvia span {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+button {
+    background-color: #ea3f6e !important;
+    color: white !important;
+}
+
+button:hover {
+    background-color: #e6808f !important;
+}
+
+@media screen and (min-width: 750px) and (max-width: 1024px){
+    .avvia {
+        right: 6px;
+        top: 10px;
+    }
+    .avvia span {
+        font-size: 0.75rem;
+    }
+}
+@media screen and (min-width: 1025px) and (max-width: 1399px){
+    .avvia {
+        top: 20px;
+    }
+    // .imageAddSimulation {
+    //     height: 100% !important;
+    // }
+    .img-responsive{
+        margin-bottom: 2.5em;
+    }
+}
+@media screen and (min-width: 1400px){
+    .avvia {
+        top: 3px;
+        right: -40px;
+    }
+}
+
+// .imageAddSimulation {
+//     height: 80%;
+    
+// }
+
+.img-responsive-wrapper .img-responsive .img-wrapper img {
+    width: 90%;
+    display: block;
+    height: 90%;
+    margin: auto; 
+}
