@@ -1,0 +1,32 @@
+.custom-label {
+  // font-size: 14px;
+  // font-weight: 500;
+  margin-left: 2px;
+}
+
+.detail-table {
+  height: 220px !important;
+}
+
+:host ::ng-deep {
+  th {
+    font-size: 14px !important;
+  }
+
+  .ui-table .ui-table-thead > tr > th {
+    padding-left: 10px !important;
+  }
+
+  .ui-table-tbody {
+    display: block !important;
+    // height: 150px !important;
+    overflow: auto !important;
+  }
+
+  .ui-table-thead,
+  .ui-table-tbody tr {
+    display: table !important;
+    width: 100% !important;
+    table-layout: fixed !important;
+  }
+}

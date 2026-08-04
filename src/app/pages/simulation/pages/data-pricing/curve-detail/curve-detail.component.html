@@ -1,0 +1,39 @@
+<div class="pl-5 pr-5 pt-0 " style="padding: 2em 0 0;">
+  <div fxLayout="row wrap ">
+    <div class="pb-3" [ngStyle]="getChartStyle()"
+      *ngFor="let groupCurve of groupedCurves | keyvalue; let i = index">
+      <div fxLayout="row" fxLayoutGap="25px" fxLayoutAlign="start center">
+        <label class="type-category" fxLayout="row" fxLayoutAlign="start center">
+          <span class="curve-legend" [ngStyle]="{'background-color': groupCurve.value[0]?.tipologia.colore}"></span>
+          <u>{{ groupCurve.value[0]?.tipologia.descrizione | uppercase}}</u>
+        </label>
+        <p class="data-pricing-paragraph">
+          <label *ngFor="let curve of groupCurve.value; let i = index; let last = last">
+            {{ curve.descrizione}}{{ (!last) ? ' &nbsp;/&nbsp;' : '' }}
+          </label>
+        </p>
+      </div>
+      <app-chart-curve [keyCurve]="groupCurve.key" [curves]="groupCurve.value"></app-chart-curve>
+    </div>
+  </div>
+  <ng-container *ngFor="let groupCurve of groupedCurves | keyvalue; let i = index">
+    <div fxLayout="row" class="mt-2">
+      <h5 fxLayout="row" fxLayoutAlign="start center">
+        {{ groupCurve.value[0]?.tipologia.descrizione | uppercase }}
+        <div *ngIf="groupCurve.value[0]?.tipologia.descrizioneEstesa" [pTooltip]="groupCurve.value[0]?.tipologia.descrizioneEstesa"
+          style="display: flex;">
+          <svg class="app-info-popup icon" fill="blue">
+            <use xlink:href="/assets/bootstrap-italia/dist/svg/sprite.svg#it-help-circle"></use>
+          </svg>
+        </div>
+      </h5>
+    </div>
+    <div fxLayout="row wrap">
+      <div style="max-width: 50%;" *ngFor="let curve of groupCurve.value; let i = index">
+        <app-curve-detail-card [disabled]="disabled" [curve]="curve" (editColor)="onEditColor($event)" (editCurve)="onEditCurve($event)"
+          (addCurve)="onAddCurve($event)" (deleteCurve)="onDeleteCurve($event)">
+        </app-curve-detail-card>
+      </div>
+    </div>
+  </ng-container>
+</div>

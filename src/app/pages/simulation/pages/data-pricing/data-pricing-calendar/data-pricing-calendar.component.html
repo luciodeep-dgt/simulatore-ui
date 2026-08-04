@@ -1,0 +1,5 @@
+<p-calendar class="calendar-pricing" [ngModel]="selectedDates" (ngModelChange)="onSelectDate($event)"
+  [locale]="calendarLocaleIt" dateFormat="dd/mm/yy" selectionMode="multiple" [inline]="true"
+  [maxDateCount]="maxSelectableDates" [maxDate]="maxDate" [disabledDates]="invalidDates"
+  [disabledDays]="[0,6]" (onMonthChange)="onMonthChange($event)" [disabled]="disabled"
+  [style]="{'width':'100%'}" [inputStyle]="{'width':'100%'}"></p-calendar>

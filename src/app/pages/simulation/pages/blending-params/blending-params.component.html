@@ -1,0 +1,35 @@
+<div class="col-12 justify-content-between">
+  <div class="pl-5 pr-5 pb-5 mb-1 row box-bianco" style="border-top: 1px solid #d3d3d3; padding: 2em 0 0;">
+    <div class="col-lg-6">
+      <div class="pb-3">
+        <h3>{{ 'SIMULATION.BLENDING.TITLE' | translate}}</h3>
+        <p [innerHTML]="'SIMULATION.BLENDING.SUBTITLE' | translate" class="subtitle"></p>
+      </div>
+      <div class="pl-2 pb-5" *ngIf="blendingParams$ | async as blendingParams; else loadingOrError">
+        <div class="row">
+          <h5 style="font-weight: 600;">Inserisci qui parametro di blending</h5>
+        </div>
+        <div class="row">
+          <div class="mr-3" *ngFor="let param of blendingParams.items">
+            <div style="display: inline" *ngIf="{value: selectedParams$ | async} as selectedParam">
+              <p-radioButton name="param" [value]="param.id" [disabled]="isDisabled()" 
+                [ngModel]="selectedParam.value?.id" (ngModelChange)="onModelChange($event)"></p-radioButton>
+            </div>
+            <label class="ml-2" style="font-weight: 400;">{{ param.valore }} %</label>
+          </div>
+        </div>
+      </div>
+      <ng-template #loadingOrError>
+        <app-error-panel [error]="error" text="Non è stata trovato nessuna parametro di blending."></app-error-panel>
+      </ng-template>
+    </div>
+    <div class="col-lg-6">
+      <div class="image-box">
+        <img
+        src="../../../../../assets/images/imageBlending.jpg"
+        alt
+        style="width : 100%; height: 100%;"
+      /> 
+      </div>
+    </div>
+  </div>

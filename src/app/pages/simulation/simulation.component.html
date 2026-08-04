@@ -1,0 +1,46 @@
+<div class="col col-md">
+  <div class="main">
+    <div class="row">
+      <div class="col-md-12 mb-1">
+        <div class="bluPolvere rounded-more d-flex" *ngIf="simulation$ | async as simulation">
+          <app-simulation-banner class="col-md-9" [simulation]="simulation"></app-simulation-banner>
+          <div class="col-md-3 d-flex rounded container-end-banner">
+            <button [disabled]="simulation.stato?.codice !== 'LAV'" (click)="saveAndExit()" 
+              class="btn text-primary bg-white btn-icon align-middle" type="button"
+              name="button" style="font-size:.8em;"><span>{{ 'SIMULATION.SALVA_ED_ESCI_BUTTON' | translate }}</span>
+              <svg class="icon icon-blue ml-2" style="align-self: center" width="1em" height="1em" viewBox="0 0 20 20"
+                fill="#000" xmlns="http://www.w3.org/2000/svg">
+                <use href="/assets/bootstrap-italia/dist/svg/sprite.svg#bi-exit"></use>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <app-simulation-stepper [currentStep]="currentStep$ | async" [statusSteps]="statusSteps$ | async"></app-simulation-stepper>
+    </div>
+  </div>
+</div>
+
+<div style="padding-top: 0px !important" class="main">
+  <router-outlet></router-outlet>
+  <div fxLayout="row" fxLayoutAlign="space-between end" class="pb-5">
+    <div fxLayout="col">
+      <button (click)="onBack()" [disabled]="isBackDisabled$ | async" class="mr-2 bottom-btn btn btn-outline-primary align-middle" type="button"
+        name="button" style="font-size:.8em;">
+        <span>{{ 'SIMULATION.BACK_BUTTON' | translate }}</span>
+      </button>
+      <button (click)="onNext()" [disabled]="isNextDisabled$ | async" class="btn bottom-btn btn-outline-primary align-middle" type="button" name="button"
+        style="font-size:.8em;">
+        <span>{{ 'SIMULATION.NEXT_BUTTON' | translate }}</span>
+      </button>
+    </div>
+    <div fxLayout="col">
+      <button [disabled]="isSaveDisabled()" (click)="saveAndProceed()" class="btn bottom-btn btn-primary align-middle"
+        type="button" name="button" style="font-size:.8em;">
+        <span>{{ (!isLastStep() ? 'SIMULATION.SAVE_BUTTON' : 'SIMULATION.COMPLETE_BUTTON') | translate }}</span>
+      </button>
+    </div>
+  </div>
+</div>

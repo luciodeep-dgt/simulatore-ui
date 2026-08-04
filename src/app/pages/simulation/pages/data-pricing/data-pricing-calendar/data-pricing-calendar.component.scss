@@ -1,0 +1,18 @@
+:host ::ng-deep {
+  .calendar-pricing {
+    width: 100%;
+  }
+  .calendar-pricing .ui-widget-content, .calendar-pricing table {
+    width: 100%;
+    min-width: 100px !important;
+  }
+
+  .ui-datepicker table td {
+    padding: 0px !important;
+  }
+
+  .ui-datepicker {
+    background-color: transparent !important;
+  }
+}
+

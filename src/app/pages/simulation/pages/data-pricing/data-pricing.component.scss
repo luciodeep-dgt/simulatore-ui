@@ -1,0 +1,35 @@
+.box-bianco {
+  border-radius: 0px !important;
+}
+
+.page-wrapper {
+  border-top: 1px solid #d3d3d3;
+}
+
+
+.not-available-date {
+  padding-left: 80px;
+  padding-top: 55px;
+  opacity: .2;
+}
+
+.data-emissione {
+  width: 100%;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+::ng-deep {
+  .modal-dialog {
+    margin-top: 0px !important;
+  }
+
+  .ui-calendar-w-btn {
+    display: flex;
+  }
+
+  .ui-calendar .ui-calendar-button {
+    height: unset;
+  }
+
+}

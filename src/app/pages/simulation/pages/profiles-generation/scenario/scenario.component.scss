@@ -1,0 +1,64 @@
+.scenario-informations {
+  p {
+    font-size: 16px;
+  }
+}
+
+.scenario-status {
+  font-size: 16px;
+}
+
+label.tipologie {
+  font-size: 16px;
+}
+
+.legend-paragraph {
+  font-weight: 400;
+  font-size: 15px;
+}
+
+.type-category {
+  font-weight: bold;
+  margin-left: 8px;
+  font-size: 16px !important;
+}
+
+.validate-btn button {
+  background-color: #ea3f6e;
+  color: white;
+}
+
+:host ::ng-deep .validate-btn .ui-chkbox-box {
+  box-shadow: unset !important;
+  border: 2.5px solid #435a70 !important;
+  height: 22px !important;
+  width: 22px !important;
+}
+
+:host ::ng-deep .validate-btn .ui-chkbox-label {
+  // color: white !important;
+  font-size: 16px !important;
+}
+
+:host ::ng-deep .ui-chkbox-label {
+  font-weight: bold !important;
+}
+
+:host ::ng-deep .ui-chkbox-label.ui-label-disabled {
+  cursor: not-allowed !important;
+}
+
+:host ::ng-deep .ui-chkbox .ui-chkbox-box.ui-state-active {
+  border-color: #ea3f6e !important;
+  background-color: #ea3f6e !important;
+}
+
+:host ::ng-deep .ui-radiobutton .ui-radiobutton-box.ui-state-active {
+  border-color: #ea3f6e !important;
+  background-color: #ea3f6e !important;
+}
+
+:host ::ng-deep .ui-chkbox .ui-chkbox-box.ui-state-disabled {
+  // border-color: #e6e9f2 !important;
+  cursor: not-allowed !important;
+}

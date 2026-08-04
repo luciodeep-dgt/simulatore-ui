@@ -1,0 +1,50 @@
+<div class="d-flex col-12 pb-5 justify-content-between">
+  <div class="pl-5 pr-5 col-12 box-bianco" style="border-top: 1px solid #d3d3d3; padding: 2em 0 0;">
+
+    <div class="row mb-2">
+      <div class="col-lg-5">
+        <h3 translate>SIMULATION.PROFILI.TITLE</h3>
+        <p class="subtitle" translate>SIMULATION.PROFILI.SUBTITLE</p>
+      </div>
+      <div class="col-lg-7">
+        <div style="float: right;">
+          <button [disabled]="isDownloadDisabled" (click)="onDownloadScenari()" 
+            name="button" class="mr-2 bottom-btn btn btn-outline-primary align-middle" type="button"
+            style="font-size:.8em;">
+            <span fxLayoutAlign="space-between center">
+              <span>Download </span>
+              <svg class="ml-2 icon icon-sm" fill="blue">
+                <use xlink:href="assets/bootstrap-italia/dist/svg/sprite.svg#it-download"></use>
+              </svg>
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <p-accordion *ngFor="let item of accordions$ | async; let i = index" 
+          [expandIcon]="'pi pi-plus'" [collapseIcon]="'pi pi-minus'">
+          <p-accordionTab [header]="item.header">
+            <ng-template pTemplate="content">
+              <br>
+              <app-scenario *ngIf="item.content$ | async as scenario" 
+                [readonly]="isDisabled()" [scenario]="scenario" 
+                (validate)="onValidateScenario($event)"></app-scenario>
+            </ng-template>
+          </p-accordionTab>
+        </p-accordion>
+      </div>
+    </div>
+    <br>
+  </div>
+</div>
+
+
+<p-confirmDialog #cd>
+  <p-footer>
+    <button class="btn btn-primary btn-sm" type="button" (click)="cd.accept()">Si</button>
+    <button class="btn btn-outline-secondary btn-sm" type="button" data-dismiss="modal" (click)="cd.reject()">No</button>
+  </p-footer>
+</p-confirmDialog>

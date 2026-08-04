@@ -1,0 +1,123 @@
+:host ::ng-deep {
+  .ui-datepicker {
+    background-color: white !important;
+  }
+
+  .ui-calendar .ui-inputtext {
+    border: none;
+  }
+
+  .no-borders {
+    border: none;
+  }
+
+  // .modal-body {
+  //   overflow: auto;
+  // }
+
+  .modal-title {
+    font-size: 16px !important;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .modal-content .modal-footer {
+    padding-bottom: 20px !important;
+  }
+
+  .modal-header {
+    display: block !important;
+  }
+
+  .modal-content {
+    background-color: white !important;
+    overflow-y: auto;
+    // height: 80vh;
+  }
+
+  .invalid-feedback {
+    display: block;
+  }
+
+  // .ui-table-wrapper {
+  //   overflow: hidden;
+  // }
+
+  .ui-radiobutton-label {
+    font-weight: 500;
+    font-size: 16px;
+  }
+
+  th {
+    font-size: 14px !important;
+    padding-left: 10px !important;
+  }
+
+  .ui-table-tbody {
+    display: block !important;
+    //height: 380px !important;
+    overflow-y: auto !important;
+    overflow-x: hidden;
+  }
+
+  .ui-table-thead,
+  .ui-table-tbody tr {
+    display: table !important;
+    width: 100% !important;
+    table-layout: fixed !important;
+  }
+
+  // .detail-table {
+  //   height: 400px !important;
+  // }
+
+  input[type="date"],
+  input[type="datetime-local"],
+  input[type="email"],
+  input[type="number"],
+  input[type="password"],
+  input[type="search"],
+  input[type="tel"],
+  input[type="text"],
+  input[type="time"],
+  input[type="url"],
+  textarea {
+    height: 2.0rem !important;
+  }
+
+  p-inputMask .ui-inputtext:not([disabled]) {
+    font-weight: 700 !important;
+  }
+
+  p-inputMask .ui-inputtext:enabled:focus:not(.ui-state-error) {
+    border-color: unset !important;
+    box-shadow: none !important;
+  }
+
+  p-inputmask.ng-dirty.ng-invalid > .ui-inputtext {
+    border: none !important;
+    border-bottom: 1px solid #a80000 !important;
+  }
+
+  p-inputMask .ui-inputtext[disabled] {
+    border-bottom: none !important;
+  }
+
+  @media screen and (max-height: 599px){
+    .ui-table-wrapper {
+      height: 119px;
+    }
+  }
+
+  @media screen and (min-height: 600px) and (max-height: 899px){
+    .ui-table-wrapper {
+      height: 196px;
+    }
+  }
+
+  @media screen and (min-height: 900px){
+    .ui-table-wrapper {
+      height: 437px;
+    }
+  }
+}

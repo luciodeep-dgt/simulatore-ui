@@ -1,0 +1,79 @@
+<div>
+  <div fxLayout="row" fxLayoutAlign="end center" style="margin: 7px 0px;">
+
+    <p-fileUpload hidden mode="basic" #uploader class="mr-2" name="myfile[]" customUpload="true" chooseLabel="Upload template"
+      [auto]="true" (uploadHandler)="onUpload(uploader, $event)" chooseIcon="pi pi-upload" accept=".xlsx">
+    </p-fileUpload>
+
+    <button [disabled]="disabled" (click)="triggerUpload(uploader)" name="button" class="mr-2 bottom-btn btn btn-outline-primary align-middle"
+      type="button" style="font-size:.8em;">
+      <span fxLayoutAlign="space-between center">
+        <span style="margin-left: 14px;">Upload </span>
+        <svg class="ml-2 icon icon-sm" fill="blue">
+          <use xlink:href="assets/bootstrap-italia/dist/svg/sprite.svg#it-upload"></use>
+        </svg>
+      </span>
+    </button>
+    <button (click)="onDownloadCedole()" name="button" class="mr-2 bottom-btn btn btn-outline-primary align-middle" type="button"
+      style="font-size:.8em;">
+      <span fxLayoutAlign="space-between center">
+        <span>Download </span>
+        <svg class="ml-2 icon icon-sm" fill="blue">
+          <use xlink:href="assets/bootstrap-italia/dist/svg/sprite.svg#it-download"></use>
+        </svg>
+      </span>
+    </button>
+  </div>
+  <div fxLayout="row">
+    <p-table [value]="currentCedolaDetail" [lazy]="true">
+      <ng-template pTemplate="header" let-columns>
+        <tr>
+          <th>{{ 'SIMULATION.TASSI.TASSI_FIELDS.COLUMN1' | translate}}</th>
+          <th>{{ 'SIMULATION.TASSI.TASSI_FIELDS.COLUMN2' | translate}}</th>
+          <th>{{ 'SIMULATION.TASSI.TASSI_FIELDS.COLUMN3' | translate}}</th>
+          <th>{{ 'SIMULATION.TASSI.TASSI_FIELDS.COLUMN4' | translate}}</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-detail let-rowIndex="rowIndex" let-columns="columns">
+        <tr>
+          <td>
+            <input disabled type="text" value="{{ detail.dataRiferimento | date:'MM/yyyy' }}" class="ui-inputtext ui-widget ui-state-default ui-corner-all"
+              style="border-bottom: none;">
+          </td>
+          <td>
+            <input disabled type="text" value="{{ detail.tenor }}" class="text-right ui-inputtext ui-widget ui-state-default ui-corner-all" style="border-bottom: none;">
+          </td>
+          <td>
+            <div class="ui-inputgroup">
+              <input required [disabled]="disabled" name="valoreNominale" #valoreNominale="ngModel" [ngModel]="''+detail.valoreNominale" class="text-right"
+                (ngModelChange)="onValueChange(detail, valoreNominale.value, 'NOMINALE')" type="text" [imask]="settings" (paste)="onPasteText($event, rowIndex, false)">
+              <span class="ui-inputgroup-addon">%</span>
+            </div>
+            <span class="invalid-feedback" *ngIf="formSubmitted && valoreNominale.invalid">
+              Campo obbligatorio
+            </span>
+          </td>
+          <td>
+            <div class="ui-inputgroup">
+              <input required [disabled]="disabled" name="valoreEffettivo" #valoreEffettivo="ngModel" [ngModel]="''+detail.valoreEffettivo"
+                (ngModelChange)="onValueChange(detail, valoreEffettivo.value, 'EFFETTIVO')" type="text" [imask]="settings" class="text-right"
+                (paste)="onPasteText($event, rowIndex, true)">
+              <span class="ui-inputgroup-addon">%</span>
+            </div>
+            <span class="invalid-feedback" *ngIf="formSubmitted && valoreEffettivo.invalid">
+              Campo obbligatorio
+            </span>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage" let-columns>
+        <tr>
+          <td colspan="4" class="text-center">
+            <p translate>SIMULATION.TASSI.NOT_FOUND_BY_SUBCATEGORY</p>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+
+</div>

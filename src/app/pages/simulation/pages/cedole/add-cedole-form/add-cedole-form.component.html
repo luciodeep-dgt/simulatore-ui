@@ -1,0 +1,20 @@
+<!--
+<p-accordion [expandIcon]="'pi pi-plus'" [collapseIcon]="'pi pi-minus'">
+  <p-accordionTab [header]="cedola.descrizione || 'Cedola ' + (index + 1)" [selected]="collapsed">
+    -->
+    <div fxLayout="row" fxLayoutAlign="flex-end" *ngIf="showDeleteButton && !isDisabled()">
+      <button (click)="onDeleteCedola()"
+        class="btn bottom-btn btn-danger align-middle mb-1" type="button" name="button"
+        style="font-size:1em;">
+        <span>Elimina Scenario Tassi</span>
+      </button>
+    </div>
+    <p-tabView>
+      <p-tabPanel [header]="item.header" *ngFor="let item of cedoleTab; let i = index">
+        <app-cedola-form [disabled]="isDisabled()" [subcategory]="item.value" [cedola]="cedola" (submit)="onSave($event)"
+          (submitAndClose)="onSave($event)" (upload)="onUploadFile($event)" (downloadCedole)="onDownloadCedole()"></app-cedola-form>
+      </p-tabPanel>
+    </p-tabView>
+<!--
+  </p-accordionTab>
+</p-accordion>-->

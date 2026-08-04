@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-md-8">
+    <div class="card-wrapper">
+      <div class="card bg-trasparente">
+        <div class="card-body text-white">
+          <div class="row justify-content-between">
+            <div class="col-auto card-subtitle" style="padding-left: 30px">{{ 'SIMULATION.BANNER.DATA_CREAZIONE' | translate}}: <span
+                style="font-weight:800;">{{simulation.dataCreazione | date:'dd MMM yyyy'}}</span>
+            </div>
+            <div class="col-auto">
+
+            </div>
+          </div>
+          <div class="row justify-content-start">
+            <p style="padding-left: 30px">
+              Id: {{ simulation.id }}
+              <!-- <app-info-popup style="display: inline-flex" color="white" class="ml-4" [simulation]="simulation"></app-info-popup> -->
+            </p>
+          </div>
+          <div class="col-md-10 pl-4">
+            <p style="margin-bottom:.3em;"><strong>{{ 'SIMULATION.BANNER.DESCRIZIONE' | translate}}</strong></p>
+            <p class="card-title" style="font-size: 1.5rem;">
+              {{ simulation.descrizione }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col-md-4">
+    <div class="ufficio">
+      <p class="text-white pt-4 small">{{ 'SIMULATION.BANNER.STATO' | translate}}: <strong>{{ simulation.stato.descrizione }}</strong></p>
+      <img src="/assets/bootstrap-italia/dist/img/office.svg" alt="">
+    </div>
+  </div>
+</div>

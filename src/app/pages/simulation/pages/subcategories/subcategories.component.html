@@ -1,0 +1,34 @@
+
+<div class="d-flex col-12 pb-5 justify-content-between">
+  <div class="pl-5 pr-5 col-12 box-bianco" style="border-top: 1px solid #d3d3d3; padding: 2em 0 0;">
+    <div class="col-lg-5">
+      <h3>{{ 'SIMULATION.SUBCATEGORIES.TITLE' | translate}}</h3>
+      <p class="subtitle">{{ 'SIMULATION.SUBCATEGORIES.SUBTITLE' | translate}}</p>
+    </div>
+    <div class="row mt-2">
+      <div class="col-12">
+        <div fxLayoutAlign="end">
+          <div class="col-md-3">
+            <div class="form-group">
+              <input type="text" [(ngModel)]="searchText" #searchInput="ngModel" class="form-control"
+                id="cercaInputText">
+              <label class="form-control-placeholder" for="cercaInputText">
+                <svg class="icon" style="width:22px; height:22px;">
+                  <use xlink:href="assets/bootstrap-italia/dist/svg/sprite.svg#it-search"></use>
+                </svg> {{ 'SIMULATION.SUBCATEGORIES.CERCA_SOTTOCATEGORIE' | translate}}
+              </label>
+            </div>
+          </div>
+        </div>
+        <div style="position: relative" class="mb-4" *ngIf="subcategories$ | async as subcategories">
+          <ng-container *ngIf="selectedCategories$ | async as items">
+            <app-subcategories-list [disabled]="isDisabled()"
+            [subcategories]="subcategories" [selectedCategories]="items" (pageChange)="onPageChange($event)"
+            (selectSubcategory)="onSelectSubcategory($event)"></app-subcategories-list>
+          </ng-container>
+          <ngx-ui-loader [loaderId]="'subcategories-list'" [overlayColor]="'rgba(255,255,255,0.3)'"></ngx-ui-loader>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

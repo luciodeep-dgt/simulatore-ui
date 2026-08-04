@@ -1,0 +1,21 @@
+<div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-content">
+    <div class="pl-5 pr-5">
+      <div class="modal-header bluPolvere">
+        <div class="sfondoModale">
+          <img src="assets/bootstrap-italia/dist/img/new-simulation-modal.svg" alt="" class="">
+        </div>
+        <h4 class="modal-title text-white">{{ 'SIMULATION.STATUS_DIALOG.SIMULAZIONE_SALVATA' | translate }}</h4>
+      </div>
+      <div class="modal-body  text-white bluPolvere">
+        <div class="text-white bluPolvere p-2 col-8">
+          {{ 'SIMULATION.STATUS_DIALOG.DESCRIZIONE_SUCCESSO' | translate }}
+        </div>
+      </div>
+      <div class="modal-footer mt-5 bluPolvere justify-content-start">
+        <button class="btn bg-white btn-sm p3" (click)="onCloseDialog(true)" role="button"
+          style="border: 1px solid #fff; padding-left: 32px; padding-right: 32px;">{{ 'SIMULATION.STATUS_DIALOG.CONTINUA_BUTTON' | translate }}</button>
+      </div>
+    </div>
+  </div>
+</div>

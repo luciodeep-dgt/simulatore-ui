@@ -1,0 +1,36 @@
+<div>
+  <div class="d-flex justify-content-center progressBar">
+    <ng-container *ngFor="let item of (items$ | async); let i = index;">
+      <div class="col" [ngClass]="getStepClass(item)">
+        <hr>
+        <div class="cerchioEsterno d-flex align-items-center" [ngClass]="{'primary-bg-a1': currentStep === item.step}">
+          <div class="cerchioInterno primary-bg d-flex align-items-center justify-content-center">
+            <p class="text-white" *ngIf="!isCompleted(item); else checkMark">{{i + 1 }}
+            </p>
+            <ng-template #checkMark>
+              <svg class="bi bi-check" width="1em" height="1em" viewBox="0 0 16 16" fill="#fff"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                  d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z"
+                  clip-rule="evenodd" />
+              </svg>
+            </ng-template>
+          </div>
+        </div>
+        <div class="titoloProgress">
+          <a (click)="navigateTo(item)" *ngIf="isLinkable(item); else notLinkable"
+            routerLink="{{item.routerLink}}">
+            <h6 class="text-uppercase font-weight-bold"
+              [ngStyle]="{'color': (currentStep === item.step) ? '#207bd6' : '#000'}">{{item.label | translate}}</h6>
+          </a>
+          <ng-template #notLinkable>
+            <a>
+              <h6 class="text-uppercase font-weight-bold"
+                [ngStyle]="{'color': (currentStep === item.step) ? '#207bd6' : '#000'}">{{item.label | translate}}</h6>
+            </a>
+          </ng-template>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

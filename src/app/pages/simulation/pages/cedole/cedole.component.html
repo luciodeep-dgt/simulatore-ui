@@ -1,0 +1,62 @@
+<div class="d-flex col-12 pb-5 justify-content-between">
+  <div class="pl-5 pr-5 col-12 box-bianco" style="border-top: 1px solid #d3d3d3; padding: 2em 0 10px;">
+    <div class="row col-md-12">
+      <div class="col-md-6">
+        <h3>{{ 'SIMULATION.TASSI.TITLE' | translate }}</h3>
+        <p [innerHTML]="'SIMULATION.TASSI.SUBTITLE' | translate" class="subtitle"></p>
+      </div>
+      <div class="col-md-6">
+				<div class="row d-flex justify-content-end align-items-center pt-3">
+					<p-calendar
+						dateFormat="dd/mm/yy"
+            [(ngModel)]="dataEmissione"
+            [disabledDays]="[0,6]"
+						[disabledDates]="invalidDates"
+						[locale]="calendarLocale"
+            [disabled]="dataEmissioneDisabled"
+						[readonlyInput]="true"
+						[showIcon]="true"
+						placeholder="{{ 'SIMULATION.TASSI.DATA_EMISSIONE' | translate }}"
+            class="data-emissione"
+            (onSelect)="onSelectData($event)"
+					>
+					</p-calendar>
+				</div>
+      </div>
+    </div>
+    <ng-container>
+      <ng-template #dataEmissioneEmptyRef>
+        <!-- <h2
+          class="text-center py-5"
+          style="opacity: 0.2; white-space: pre-wrap"
+        > -->
+        <h2 class="not-available-date">Nessun dato disponibile
+          <br> seleziona una data</h2>
+      </ng-template>
+      <ng-container *ngIf="!dataEmissioneEmpty; else dataEmissioneEmptyRef">
+        <div *ngIf="{value: cedoleToEdit$ | async} as cedole">
+          <p-accordion [expandIcon]="'pi pi-plus'" [collapseIcon]="'pi pi-minus'">
+            <p-accordionTab *ngFor="let cedola of cedole.value; let i = index"
+              [header]="cedola.descrizione || 'Scenario Tassi ' + (i + 1)">  <!-- [selected]="i === 0" -->
+                  
+              <app-add-cedole-form [index]="i" [showDeleteButton]="showDeleteButton" [cedola]="cedola"
+                [subcategories]="subcategories$ | async" (deleteCedola)="onDeleteCedola(cedola)"></app-add-cedole-form>
+
+            </p-accordionTab>
+          </p-accordion>
+          <div fxLayoutAlign="end">
+            <button [disabled]="hasError || isAddDisabled()" (click)="onClickAdd()"
+              class="btn bottom-btn btn-primary align-middle mt-2 mb-4 float-right" type="button" name="button"
+              style="font-size:.8em;">
+              <span>+ Aggiungi scenario tassi</span>
+            </button>
+          </div>
+          <div class="mb-1">
+            <app-cedole-list [cedole$]="cedole$" [collapsed]="true">
+            </app-cedole-list>
+          </div>
+        </div>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>

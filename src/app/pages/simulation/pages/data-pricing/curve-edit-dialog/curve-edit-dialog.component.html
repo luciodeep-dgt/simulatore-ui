@@ -1,0 +1,100 @@
+<div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-content">
+    <div class="pl-3 pr-3">
+      <div class="modal-header">
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+          <label class="modal-title">
+            {{ 'AGGIUNTA CURVA' | uppercase}}<br>
+            <label style="font-size: 16px; font-weight: 400;">
+              {{ 'SIMULATION.CURVE.DIALOG.SUBTITLE' | translate}}: {{ getSubcategoryDescription() }}
+            </label>
+          </label>
+          <button class="btn btn-icon" (click)="onModalClose()">
+            <svg class="icon icon-primary icon-sm" fill="white ">
+              <use xlink:href="assets/bootstrap-italia/dist/svg/sprite.svg#it-close-big"></use>
+            </svg>
+          </button>
+        </div>
+        <p style="font-weight: 500;" *ngIf="isChoosing">Scegli se duplicare la curva selezionata o aggiungerne una nuova
+        </p>
+        <p style="font-weight: 500;" *ngIf="isInCreate">Compila i campi per completare la creazione di una nuova curva
+        </p>
+        <p style="font-weight: 500;" *ngIf="isInEdit">Modifica i campi per completare la modifica della curva</p>
+      </div>
+      <div class="modal-body">
+        <div fxLayout="column">
+          <ng-container *ngIf="isChoosing; else createOrEdit">
+            <p-radioButton name="duplicate" value="DUPLICATE" label="Duplica curva selezionata" [(ngModel)]="option">
+            </p-radioButton>
+            <p-radioButton class="mt-2" name="create" value="CREATE" label="Aggiungi nuova curva" [(ngModel)]="option">
+            </p-radioButton>
+          </ng-container>
+          <ng-template #createOrEdit>
+            <form [formGroup]="form" class="form-group">
+              <input type="text" class="form-control" id="descrizione" formControlName="descrizione">
+              <label class="form-control-placeholder active" for="descrizione">
+                Descrizione curva
+              </label>
+              <div *ngIf="hasErrorsToShow('descrizione')">
+                <span class="invalid-feedback" *ngIf="getControl('descrizione').errors.required">
+                  Campo obbligatorio
+                </span>
+                <span class="invalid-feedback" *ngIf="getControl('descrizione').errors.maxlength">
+                  La descrizione deve essere massimo 40 caratteri.
+                </span>
+              </div>
+              <div class="detail-table row">
+                <p-table [value]="selectedCurve.dettagli" [lazy]="true">
+                  <ng-template pTemplate="header" let-columns>
+                    <tr>
+                      <th>{{ 'SIMULATION.DATA_PRICING.TABLE_FILEDS.COLUMN1' | translate}}</th>
+                      <th>{{ 'SIMULATION.DATA_PRICING.TABLE_FILEDS.COLUMN2' | translate}}</th>
+                      <th>{{ 'SIMULATION.DATA_PRICING.TABLE_FILEDS.COLUMN3' | translate}}</th>
+                    </tr>
+                  </ng-template>
+                  <ng-template pTemplate="body" let-detail let-rowIndex="rowIndex" let-columns="columns">
+                    <tr>
+                      <td>
+                        <p-calendar class="no-borders" appendTo="body" styleClass="input-small" [formControlName]="'date' + rowIndex"
+                          view="month" dateFormat="mm/yy" [maxDate]="getYesterday()" [readonlyInput]="true">
+                        </p-calendar>
+                        <div *ngIf="hasErrorsToShow('date' + rowIndex)">
+                          <span class="invalid-feedback" *ngIf="getControl('date' + rowIndex).errors.required">
+                            Campo obbligatorio
+                          </span>
+                        </div>
+                      </td>
+                      <td>
+                        <input type="text" disabled [value]="detail.tenor || null"
+                         class="ui-inputtext ui-widget ui-state-default ui-corner-all"
+                         style="border-bottom: none;">
+                      </td>
+                      <td>
+                        <div class="ui-inputgroup">
+                          <input [imask]="settingsMask" (paste)="onPasteText($event, rowIndex)" [value]="getControl('value' + rowIndex).value | toString" [formControlName]="'value' + rowIndex">
+                          <span class="ui-inputgroup-addon">%</span>
+                        </div>
+                        <div *ngIf="hasErrorsToShow('value' + rowIndex)">
+                          <span class="invalid-feedback" *ngIf="getControl('value' + rowIndex).errors.required">
+                            Formato errato
+                          </span>
+                        </div>
+                        <!-- {{ detail.valore }}% -->
+                      </td>
+                    </tr>
+                  </ng-template>
+                </p-table>
+              </div>
+            </form>
+          </ng-template>
+        </div>
+      </div>
+      <div class="modal-footer justify-content-end">
+        <!-- <button class="btn btn-sm text-white" type="button" (click)="onCloseDialog(false)"
+          style="border:1px solid #fff;">Annulla</button> -->
+        <button class="btn btn-primary btn-sm p3" (click)="onConfirm()" role="button"
+          style="border: 1px solid #fff; padding-left: 32px; padding-right: 32px;">OK</button>
+      </div>
+    </div>
+  </div>
+</div>

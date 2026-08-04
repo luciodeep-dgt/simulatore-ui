@@ -1,0 +1,10 @@
+<p-accordion [expandIcon]="'pi pi-plus'" [collapseIcon]="'pi pi-minus'">
+  <p-accordionTab [header]="'Tabella riepilogativa inserimento scenari tassi'">
+    <p style="font-size: 16px">La lista presenta il riepilogo dei tassi effettivi lordi</p>
+    <app-cedole-list-table [mappedCedole]="mappedCedole$ | async" [cedole]="cedole$ | async"
+      [subcategories]="subcategories$ | async"
+      [cedoleSubcategories]="cedoleSubcategories$ | async">
+    </app-cedole-list-table>
+  
+  </p-accordionTab>
+</p-accordion>

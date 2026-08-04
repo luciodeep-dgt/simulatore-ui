@@ -1,0 +1,89 @@
+<div class="row mb-4">
+  <div class="col">
+    <div class="scenario-informations">
+      <h5 style="font-weight: 600">Riepilogo simulazione </h5>
+      <p>Sottocategorie:
+        <strong>{{ scenario.sottocategoria?.descrizione }}</strong>
+      </p>
+      <p>Data di Pricing:
+        <strong>{{ scenario.curva?.descrizione }} {{scenario.curva?.flagCustom ? '(CUSTOM)' : '' }}
+        </strong>
+      </p>
+      <!-- <p>Parametri di blending:
+        <strong>%</strong>
+      </p> -->
+      <p>Scenario Tassi:
+        <strong>{{ scenario.cedola.descrizione }}</strong>
+      </p>
+    </div>
+  </div>
+</div>
+
+
+<ng-container [ngSwitch]="scenario.stato?.codice">
+  <div class="row" *ngSwitchCase="'IN_ELABORAZIONE'">
+    <div class="col">
+      <p class="scenario-status" translate>SIMULATION.PROFILI.STATUS.IN_ELABORAZIONE</p>
+    </div>
+  </div>
+  <div class="row" *ngSwitchCase="'INVIATO'">
+    <div class="col">
+      <p class="scenario-status" translate>SIMULATION.PROFILI.STATUS.INVIATO</p>
+    </div>
+  </div>
+  <div class="row" *ngSwitchCase="'ERRORE'">
+    <div class="col">
+      <p class="scenario-status" translate>SIMULATION.PROFILI.STATUS.ERRORE</p>
+    </div>
+  </div>
+  <ng-container *ngSwitchCase="'ELABORATO'">
+    <div class="row mb-1" *ngIf="tipologieScenario$ | async as options">
+      <div class="col-1">
+        <label class="tipologie">{{ 'Tipologia' | translate }}:</label>
+      </div>
+      <div class="col-10">
+        <p-checkbox class="mr-2" *ngFor="let option of options" [value]="option" [label]="option.descrizione" [(ngModel)]="selectedTipologieScenario"
+          (ngModelChange)="onChangeTipologiaScenario($event)"></p-checkbox>
+      </div>
+    </div>
+    <div class="row mb-1" *ngIf="tipologieValore$ | async as options">
+      <div class="col-1">
+        <label class="tipologie">{{ 'Confronto' | translate }}:</label>
+      </div>
+      <div class="col-10">
+        <p-checkbox class="mr-2" *ngFor="let option of options" [value]="option" [label]="option.descrizione" [(ngModel)]="selectedTipologieValore"
+          (ngModelChange)="onChangeTipologiaValore($event)"></p-checkbox>
+      </div>
+    </div>
+    <div class="row mb-4" *ngIf="tipologieMaturity$ | async as options">
+      <div class="col-1">
+        <label class="tipologie">{{ 'Tenor' | translate }}:</label>
+      </div>
+      <div class="col-10">
+        <p-radioButton class="mr-2" *ngFor="let option of options" name="maturity" [value]="option.codice" [label]="option.descrizione"
+          [(ngModel)]="selectedTipologieMaturity" (ngModelChange)="onChangeTipologiaMaturity($event)"></p-radioButton>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <label class="type-category mr-5">
+          <!--<span class="curve-legend" ></span>-->
+          <u>{{ 'Profili di rimborso' }}</u>
+        </label>
+        <!-- <span class="legend-paragraph">{{scenario.dataPricing}}</span> -->
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <p-chart style="width: 100%" class="pb-3" *ngIf="chart$ | async as chart" type="scatter" [data]="chart" [options]="chartOption"
+          [plugins]="plugins"></p-chart>
+      </div>
+    </div>
+
+    <div class="mt-2 validate-btn" fxLayoutAlign="center">
+      <p-checkbox binary="true" [label]="'Valida ' + scenario.descrizione" [(ngModel)]="scenario.flagValidato"
+        [disabled]="readonly || scenario.curva?.flagCustom" (onChange)="validate.emit({ idScenario: scenario.id, validated: $event.checked })"></p-checkbox>
+    </div>
+  </ng-container>
+</ng-container>

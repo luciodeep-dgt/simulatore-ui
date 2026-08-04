@@ -1,0 +1,18 @@
+:host ::ng-deep {
+
+  p-inputMask .ui-inputtext:not([disabled]) {
+    font-weight: 700 !important;
+    border-left: unset !important;
+    border-right: unset !important;
+    border-top: unset !important;
+  }
+
+  p-inputMask .ui-inputtext[disabled] {
+    border-bottom: none !important;
+  }
+
+  .invalid-feedback {
+    display: block;
+  }
+
+}

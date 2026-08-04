@@ -1,0 +1,59 @@
+<div class="row mb-1 col-12 page-wrapper justify-content-between">
+  <div class="col-xl-3 col-lg-12 pb-3 pt-4">
+    <h3>{{ 'SIMULATION.DATA_PRICING.TITLE' | translate}}</h3>
+    <p [innerHTML]="'SIMULATION.DATA_PRICING.SUBTITLE' | translate" class="subtitle"></p>
+    <div class="row pb-5">
+      <app-data-pricing-calendar style="width: 100%" [disabled]="isDisabled()" [selectedDates]="selectedDates$ | async"
+        class="calendar-pricing" (unselectDate)="onUnselectDate($event)" (selectDate)="onSelectDate($event)">
+      </app-data-pricing-calendar>
+    </div>
+    <div>
+      <h3>{{ 'SIMULATION.DATA_PRICING.TITLE2' | translate}}</h3>
+      <p class="subtitle">
+        {{ 'SIMULATION.DATA_PRICING.DESCRIPTION.DATA_EMISSIONE2' | translate}}
+      </p>
+      <div class="row pt-3 pb-5">
+        <p-calendar [(ngModel)]="dataEmissione" [disabled]="!nearestDataPricing || isDisabled()" [minDate]="nearestDataPricing" class="data-emissione"
+          placeholder="Data di emissione" dateFormat="dd/mm/yy" [disabledDays]="[0,6]" [disabledDates]="invalidDates"
+          [locale]="calendarLocaleIt" [readonlyInput]="true" [showIcon]="true">
+        </p-calendar>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-9 col-lg-12 box-bianco pt-4">
+    <ng-container *ngIf="{ curves: curves$ | async } as data">
+
+      <div class="mr-5 ml-5">
+        <div class="pb-4" fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="end center">
+          <button [disabled]="data.curves.length === 0" (click)="onDownloadChart()" name="button"
+            class="mr-2 bottom-btn btn btn-outline-primary align-middle" type="button" style="font-size:.8em;">
+            <span fxLayoutAlign="space-between center">
+              <span>Download </span>
+              <svg class="ml-2 icon icon-sm" style="height: 21px; width: 21px;" fill="blue">
+                <use xlink:href="assets/bootstrap-italia/dist/svg/sprite.svg#it-download"></use>
+              </svg>
+            </span>
+          </button>
+          <button [disabled]="data.curves.length === 0 || isDisabled()" (click)="onSave()"
+            class="btn bottom-btn btn-primary align-middle btn-icon mr-3" type="button" name="button"
+            style="font-size:.8em;">
+            <span>Salva e procedi
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <div class="mb-4" *ngIf="data.curves.length > 0; else notSelected">
+        <app-curve-detail [disabled]="isDisabled()" style="width: 100%" [curves]="data.curves"
+          (editColor)="onEditColor($event)" (editCurve)="onEditCurve($event)" (addCurve)="onAddCurve($event)"
+          (deleteCurve)="onDeleteCurve($event)"></app-curve-detail>
+      </div>
+      <ng-template #notSelected>
+        <h2 class="not-available-date">Nessun dato disponibile
+          <br> seleziona una data</h2>
+      </ng-template>
+
+    </ng-container>
+  </div>
+  <ngx-ui-loader [loaderId]="'data-pricing'" [overlayColor]="'rgba(255,255,255,0.3)'"></ngx-ui-loader>
+</div>

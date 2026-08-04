@@ -1,0 +1,52 @@
+<div class="curve-detail-card">
+  <div class="mr-4 mt-1 ml-4 mb-0">
+    <div class="row pb-2">
+      <div class="col-xl-8 col-lg-12" style="align-self: center">
+        <div fxLayoutAlign.lt-lg="space-between center" fxLayoutAlign.gt-md="space-between center" fxLayoutAlign.lg="start center"
+          fxLayoutAlign.lt-md="start center" fxLayoutAlign.gt-lg="start center">
+          <p-colorPicker [formControl]="colorControl"></p-colorPicker>
+          <strong [ngStyle]="{'margin-left': '3px' }">{{ curve.descrizione }}</strong>
+          <div class="custom-label" *ngIf="curve.flagCustom" fxLayoutAlign="end"><i> (CUSTOM)</i></div>
+        </div>
+      </div>
+      <div class="col-xl-4 col-lg-12" fxLayoutAlign.lt-lg="space-between" fxLayoutAlign="end">
+        <button [disabled]="disabled" (click)="onEditCurve()" class="btn btn-icon align-middle pr-0 pl-2" type="button" name="button"
+          style="font-size: 1.2em;">
+          <svg class="icon icon-primary">
+            <use xlink:href="/assets/bootstrap-italia/dist/svg/sprite.svg#it-pencil"></use>
+          </svg>
+        </button>
+        <button [disabled]="disabled" (click)="onAddCurve()" class="btn btn-icon align-middle pr-0 pl-2" type="button" name="button"
+          style="font-size: 1.2em;">
+          <svg class="icon icon-primary">
+            <use xlink:href="/assets/bootstrap-italia/dist/svg/sprite.svg#it-plus-circle"></use>
+          </svg>
+        </button>
+        <button [disabled]="disabled" (click)="onDelete()" class="btn btn-icon align-middle pr-0 pl-2" type="button" name="button"
+          style="font-size: 1.2em;">
+          <svg class="icon icon-primary">
+            <use xlink:href="/assets/bootstrap-italia/dist/svg/sprite.svg#it-delete"></use>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div class="row"> <!-- class="detail-table row" -->
+      <p-table [value]="curve.dettagli" [lazy]="true">
+        <ng-template pTemplate="header" let-columns>
+          <tr>
+            <th>{{ 'SIMULATION.DATA_PRICING.TABLE_FILEDS.COLUMN1' | translate}}</th>
+            <th>{{ 'SIMULATION.DATA_PRICING.TABLE_FILEDS.COLUMN2' | translate}}</th>
+            <th>{{ 'SIMULATION.DATA_PRICING.TABLE_FILEDS.COLUMN3' | translate}}</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-detail let-columns="columns">
+          <tr>
+            <td>{{ detail.dataRiferimento | date:'MM/yy' }}</td>
+            <td>{{ detail.tenor }}</td>
+            <td>{{ detail.valore  | number : '1.2-2' }}%</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+</div>
