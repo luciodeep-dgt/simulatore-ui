@@ -1,0 +1,57 @@
+/*html *
+{
+   font-family: $primary_font !important;
+}*/
+
+body {
+  height: 100vh;
+  background: $color-background-body-gray;
+  font-size: 15px;
+}
+
+body .ui-widget {
+  font-family: "Titillium Web",Geneva,Tahoma,sans-serif !important;
+}
+
+.main {
+  padding: 1em;
+}
+
+.rotated-icon {
+  transform: rotate(90deg);
+}
+
+.subtitle {
+  font-size: 14px;
+  color: $color-subtitle-gray;
+  font-weight: 500;
+}
+
+@media (min-width: 992px) {
+  .it-header-slim-wrapper {
+    height: 75px;
+    padding: 0;
+  }
+  .it-header-slim-wrapper
+    .it-header-slim-wrapper-content
+    .it-header-slim-right-zone {
+    margin-top: 13px;
+  }
+  .main {
+    width: 93%;
+    margin: 0;
+    padding: 3em 2em 0 !important;
+  }
+  .box-bianco {
+    padding: 1.8em;
+  }
+  .card.card-wrapper.white-text
+    .card-img
+    .img-responsive-wrapper
+    .img-responsive {
+    padding-bottom: 48%;
+  }
+  #simulazioni table td {
+    max-width: 20em;
+  }
+}

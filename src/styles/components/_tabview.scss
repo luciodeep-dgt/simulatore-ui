@@ -1,0 +1,68 @@
+.ui-tabview .ui-tabview-panels {
+  border: 0px !important;
+  border-top: 1px solid #c8c8c8 !important;
+  background-color: transparent !important;
+}
+
+.ui-tabview.ui-tabview-top .ui-tabview-nav li.ui-state-active,
+.ui-tabview.ui-tabview-bottom .ui-tabview-nav li.ui-state-active,
+.ui-tabview.ui-tabview-left .ui-tabview-nav li.ui-state-active,
+.ui-tabview.ui-tabview-right .ui-tabview-nav li.ui-state-active {
+  background-color: transparent !important;
+  border-bottom: 2px solid #007ad9 !important;
+}
+
+.ui-tabview.ui-tabview-top .ui-tabview-nav li,
+.ui-tabview.ui-tabview-bottom .ui-tabview-nav li,
+.ui-tabview.ui-tabview-left .ui-tabview-nav li,
+.ui-tabview.ui-tabview-right .ui-tabview-nav li {
+  border: 0px !important;
+}
+
+.ui-tabview.ui-tabview-top .ui-tabview-nav li.ui-state-active a,
+.ui-tabview.ui-tabview-bottom .ui-tabview-nav li.ui-state-active a,
+.ui-tabview.ui-tabview-left .ui-tabview-nav li.ui-state-active a,
+.ui-tabview.ui-tabview-right .ui-tabview-nav li.ui-state-active a {
+  color: #007ad9 !important;
+  font-weight: 700 !important;
+}
+
+.ui-tabview.ui-tabview-top .ui-tabview-nav li,
+.ui-tabview.ui-tabview-bottom .ui-tabview-nav li,
+.ui-tabview.ui-tabview-left .ui-tabview-nav li,
+.ui-tabview.ui-tabview-right .ui-tabview-nav li {
+  background-color: transparent !important;
+}
+
+.ui-tabview.ui-tabview-top .ui-tabview-nav li a,
+.ui-tabview.ui-tabview-bottom .ui-tabview-nav li a,
+.ui-tabview.ui-tabview-left .ui-tabview-nav li a,
+.ui-tabview.ui-tabview-right .ui-tabview-nav li a {
+  font-weight: 400 !important;
+}
+
+@for $i from 1 through 20 {
+  .ui-tabview ul li:first-child:nth-last-child(#{$i}),
+  .ui-tabview ul li:first-child:nth-last-child(#{$i}),
+  .ui-tabview ul li:first-child:nth-last-child(#{$i}),
+  .ui-tabview ul li:first-child:nth-last-child(#{$i}),
+  .ui-tabview ul li:first-child:nth-last-child(#{$i}) ~ li {
+    text-align: center !important;
+    cursor: pointer;
+    width: calc(100% / #{$i} - 10px);
+  }
+}
+// @for $i from 1 through 20 {
+//   li:first-child:nth-last-child(#{$i}),
+//   li:first-child:nth-last-child(#{$i}) ~ li {
+//     width: calc(100% / #{$i} - 10px);
+//   }
+// }
+
+
+// .ui-tabview.ui-tabview-top .ui-tabview-nav li:first-child:nth-last-child(#{$i}),
+// .ui-tabview.ui-tabview-bottom .ui-tabview-nav li.ui-state-active,
+// .ui-tabview.ui-tabview-left .ui-tabview-nav li.ui-state-active,
+// .ui-tabview.ui-tabview-right .ui-tabview-nav li.ui-state-active {
+
+// }

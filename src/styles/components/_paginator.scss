@@ -1,0 +1,42 @@
+.ui-paginator {
+    border: none !important;
+    background-color: white !important;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+}
+
+.ui-paginator-first,
+.ui-paginator-prev,
+.ui-paginator-next, 
+.ui-paginator-last {
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    margin-right: 5px !important;
+}
+
+.ui-paginator-first:not(.ui-state-disabled):not(.ui-state-active):hover,
+.ui-paginator-prev:not(.ui-state-disabled):not(.ui-state-active):hover,
+.ui-paginator-next:not(.ui-state-disabled):not(.ui-state-active):hover,
+.ui-paginator-last:not(.ui-state-disabled):not(.ui-state-active):hover {
+    background-color: white !important;
+    color: #06c !important;
+}
+
+.ui-paginator-page {
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    margin-right: 5px !important;
+}
+
+.ui-paginator-page.ui-state-active {
+    background-color: white !important;
+    border: 1px solid #06c !important;
+    border-radius: 4px  !important;
+    color: #06c !important;
+    pointer-events: none;
+}
+
+.ui-paginator-page:not(.ui-state-active):hover {
+    background-color: white !important;
+    color: #06c !important;
+}

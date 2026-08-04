@@ -1,0 +1,95 @@
+.cerchioEsterno{
+	border-radius: 50%;
+	height: 60px;
+	width: 60px;
+	margin: auto;
+}
+.cerchioInterno{
+	border-radius: 50%;
+	height: 40px;
+	width: 40px;
+	margin: 0 auto;
+}
+.cerchioInterno p{
+	margin-bottom: 0;
+	font-weight: bold;
+  font-size: 1.2em;
+}
+
+.spuntaVerde .cerchioEsterno {
+	background-color: #eff4fb;
+}
+.spuntaVerde .cerchioInterno {
+	background-color: green;
+	height: 40px;
+  width: 40px;
+}
+.spuntaVerde svg{
+	stroke: #fff;
+  stroke-width: 2px;
+}
+
+.titoloProgress h6 {
+  margin-bottom: 2em;
+  color: #000;
+}
+.progressBar {
+  width: 90%;
+  margin: 0 auto;
+}
+.progressBar div.col {
+  position: relative;
+}
+.progressBar div.col hr {
+  position: absolute;
+  width: 45%;
+  left: 8.5em;
+  top: 2em;
+  border-top: 1px solid;
+  border-top-color: #a7a7a7;
+  margin: 0 auto;
+}
+.progressBar div.col.visible hr {
+  opacity: 0.3;
+}
+
+.progressBar div.col:last-child hr {
+  display:none;
+}
+
+@media screen and (max-width: 769px){
+  .progressBar div.col hr {
+    position: absolute;
+    width: 19%;
+    left: 14em;
+    top: 2em;
+    border-top: 1px solid;
+    border-top-color: #a7a7a7;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (min-width: 770px) and (max-width: 1024px){
+  .progressBar div.col hr {
+    position: absolute;
+    width: 40%;
+    left: 7.5em;
+    top: 2em;
+  }
+}
+@media screen and (min-width: 1025px) and (max-width: 1399px){
+  .progressBar div.col hr {
+    position: absolute;
+    width: 45%;
+    left: 9.8em;
+    top: 2em;
+  }
+}
+@media screen and (min-width: 1400px){
+  .progressBar div.col hr {
+    position: absolute;
+    width: 55%;
+    left: 13em;
+    top: 2em;
+  }
+}

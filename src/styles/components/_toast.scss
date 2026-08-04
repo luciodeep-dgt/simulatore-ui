@@ -1,0 +1,47 @@
+
+.ui-toast {
+    width: 35em;
+}
+
+.ui-toast .ui-toast-message {
+    background-color: white !important;
+    box-shadow: 5px 0px 25px rgba(0, 0, 0, 0.16) !important;
+    border-radius: 4px !important;
+}
+
+.ui-toast .ui-toast-message.ui-toast-message-info {
+    border-left: 4px #06c solid !important;
+}
+
+.ui-toast .ui-toast-message.ui-toast-message-success {
+    border-left: 4px var(--success) solid !important;
+}
+
+.ui-toast .ui-toast-message.ui-toast-message-warn {
+    border-left: 4px var(--warning) solid !important;
+}
+
+.ui-toast .ui-toast-message.ui-toast-message-error {
+    border-left: 4px var(--danger) solid !important;
+}
+
+.ui-toast .ui-toast-message-content {
+    padding: 20px;
+}
+
+.ui-toast-close-icon {
+    color: #19191a !important;
+    margin: 10px 10px 10px 10px;
+    z-index: 6002;
+}
+
+.ui-toast-close-icon:hover {
+    color: #06c !important;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 640px) {
+    .ui-toast {
+        width: 20em;
+    }
+}

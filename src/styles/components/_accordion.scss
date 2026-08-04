@@ -1,0 +1,67 @@
+/*
+.ui-accordion {
+
+}
+*/
+.ui-accordion .ui-accordion-header {
+    margin-bottom: unset !important;
+}
+
+.ui-accordion .ui-accordion-header a {
+    color: #06c !important;
+    padding: 14px 24px 14px 24px !important;
+    background-color: white !important;
+    border-color: #c8c8c8 !important;
+    border-left: unset !important;
+    border-right: unset !important;
+}
+
+.ui-accordion .ui-accordion-header .ui-accordion-header-text {
+    // color: #06c !important;
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    margin-left: 18px !important;
+}
+
+.ui-accordion-toggle-icon {
+    color: #7ab8f5 !important;
+}
+
+.ui-accordion .ui-accordion-content {
+    border: none !important;
+    padding: 12px 24px 42px !important;
+}
+
+.ui-accordion .ui-accordion-header a:focus {
+    box-shadow: unset !important;
+}
+
+/*
+.ui-accordion .ui-accordion-header:not(.ui-state-disabled).ui-state-active {
+  
+}
+*/
+.ui-accordion .ui-accordion-header:not(.ui-state-disabled).ui-state-active a {
+    color: #5c6f82 !important;
+    border-color: #c8c8c8 !important;
+    border-bottom: unset !important;
+}
+
+
+.ui-accordion .ui-accordion-header:not(.ui-state-disabled):hover a,
+.ui-accordion .ui-accordion-header:not(.ui-state-disabled).ui-state-active:hover a {
+    border-color: #c8c8c8 !important;
+}
+
+.ui-accordion .ui-accordion-header:not(.ui-state-disabled):hover a .ui-accordion-toggle-icon,
+.ui-accordion .ui-accordion-header:not(.ui-state-disabled).ui-state-active:hover a .ui-accordion-toggle-icon {
+    border-color: #c8c8c8 !important;
+}
+
+
+
+
+
+
+
+

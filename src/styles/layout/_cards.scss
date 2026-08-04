@@ -1,0 +1,33 @@
+.box-bianco {
+  background: #fff;
+  border-radius: 10px;
+  padding: 1.5em 1em;
+}
+.box-blu {
+  background: #6291d8;
+  height: 100%;
+  padding: 0;
+}
+
+.card.card-wrapper.white-text {
+  background: none;
+}
+.card.card-wrapper.white-text:after {
+  margin-top: 0;
+}
+.card.white-text .card-body h5.card-title,
+.card.white-text .card-body .card-text {
+  color: #fff;
+}
+.card-subtitle {
+  font-size: 14px;
+  padding-left: 0px;
+}
+
+div.card.bg-trasparente::after {
+  margin-top: 0;
+}
+
+.card-title {
+  font-weight: bold;
+}

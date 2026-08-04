@@ -1,0 +1,14 @@
+
+.btn-outline-primary:disabled {
+    color: #bfc2c9 !important;
+    border: 1px solid #bfc2c9 !important;
+}
+
+.btn-outline-primary:disabled:hover {
+    color: #bfc2c9 !important;
+    box-shadow: unset !important;
+}
+
+.btn-outline-primary:disabled span svg {
+    fill: #bfc2c9 !important;
+}

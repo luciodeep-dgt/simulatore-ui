@@ -1,0 +1,19 @@
+.ui-colorpicker-panel {
+    background-color: white !important;
+    border-color: #7BA2DE !important;
+}
+
+.ui-colorpicker-preview.ui-inputtext {
+    display: inline-block !important;
+    border-radius: 50% !important;
+    border-bottom: none !important;
+    padding: 0 !important; 
+    margin-right: 8px !important;
+    min-width: 10px;
+    width: 15px !important;
+    height: 15px !important;
+}
+
+.ui-colorpicker-preview.ui-inputtext.ui-state-disabled { 
+    opacity: unset !important;
+}
