@@ -1,0 +1,123 @@
+{
+  "MENU": {
+    "HOME": "Dashboard",
+    "SIMULATIONS": "Simulazioni",
+    "SETTINGS": "Impostazioni",
+    "SISPAR": "Sispar"
+  },
+  "HOME": {
+    "ADD_SIMULATION_CARD": {
+      "TITLE": "Nuova simulazione",
+      "BUTTON_TEXT": "Avvia nuova simulazione"
+    },
+    "SIMULATION_CARD": {
+      "CREAZIONE": "Puoi procedere alla creazione di una nuova simulazione cliccando il tasto Avvia nuova simulazione.",
+      "TITLE_ULTIME_SIMULAZIONI": "Ultime simulazioni",
+      "SIMULAZIONI_NON_CREATE": "Non hai ancora creato simulazioni.",
+      "ULTIME_SIMULAZIONI_HINT": "Puoi procedere alla creazione di una nuova simulazione cliccando il tasto <strong>Avvia simulazione</strong>."
+    },
+    "CREATION_DIALOG": {
+      "TITLE": "Nuova simulazione",
+      "DESCRIZIONE": "Descrizione",
+      "INPUT_HINT": "Aggiungi una descrizione simulazione",
+      "INPUT_ERROR": "Devi inserire una descrizione",
+      "ANNULLA_BUTTON": "Annulla",
+      "CREA_BUTTON": "Crea"
+    },
+    "ALL_SIMULATIONS": {
+      "TITLE": "Tutte le simulazioni",
+      "CERCA": "Cerca simulazione",
+      "STATO_SIMULAZIONE_INPUT": "Stato simulazione",
+      "TABLE_VALIDAZIONE": "Validazione",
+      "TABLE_ID": "ID",
+      "TABLE_DESCRIZIONE": "Descrizione",
+      "TABLE_AUTHOR": "Autore",
+      "TABLE_DATA": "Data",
+      "TABLE_STATO": "Stato",
+      "TABLE_NOT_FOUND": "Non è stata trovata nessuna simulazione.",
+      "DIALOG_DELETE": "La simulazione sarà archiviata, operazione irreversibile. Sei sicuro di voler procedere?"
+    }
+  },
+  "SIMULATION": {
+    "SALVA_ED_ESCI_BUTTON": "Salva ed esci dalla simulazione",
+    "BACK_BUTTON": "Indietro",
+    "NEXT_BUTTON": "Avanti",
+    "SAVE_BUTTON": "Salva e procedi",
+    "COMPLETE_BUTTON": "Salva e concludi",
+    "STEPPER": {
+      "SUBCATEGORIES": "SCELTA SOTTOCATEGORIE",
+      "DATA_PRICING": "SCELTA DATA DI PRICING",
+      "PARAMETRI_DI_BLENDING": "PARAMETRI DI BLENDING",
+      "CEDOLE": "INSERIMENTO TASSI",
+      "PROFILI_GENERATI": "PROFILI GENERATI"
+    },
+    "BANNER": {
+      "DATA_CREAZIONE": "Data creazione",
+      "DESCRIZIONE": "Descrizione simulazione",
+      "STATO": "Stato simulazione"
+    },
+    "STATUS_DIALOG": {
+      "SIMULAZIONE_SALVATA": "Simulazione salvata!",
+      "DESCRIZIONE_SUCCESSO": "La tua simulazione è stata salvata correttamente. I dati appena immessi sono stati consolidati e non saranno più modificabili. Prosegui cliccando il tasto 'Continua Simulazione'",
+      "CONTINUA_BUTTON": "Continua simulazione"
+    },
+    "SUBCATEGORIES": {
+      "TITLE": "Scegli sottocategoria",
+      "SUBTITLE": "Seleziona la tipologia di buono da coinvolgere nel processo di simulazione e salva la configurazione creata.",
+      "CERCA_SOTTOCATEGORIE": "Cerca sottocategorie",
+      "SOTTOCATEGORIE_TABLE_HEADER": "Sottocategorie",
+      "NOT_FOUND": "Non è stata trovata nessuna sottocategoria."
+    },
+    "DATA_PRICING": {
+      "TITLE": "Scegli data pricing",
+      "TITLE2": "Scegli data emissione",
+      "SUBTITLE": "Seleziona dal calendario la data a cui effettuare la simulazione.<br />E' possibile scegliere una o più date contemporaneamente.",
+      "DESCRIPTION.DATA_EMISSIONE": "Seleziona la data di emissione che deve essere uguale o successiva alla data pricing.",
+      "DESCRIPTION.DATA_EMISSIONE2": "La data di emissione determinerà le date a cui verranno calcolati i tassi forward che sono input per il modello econometrico.",
+      "TABLE_FILEDS": {
+        "COLUMN1": "Maturity",
+        "COLUMN2": "Tenor",
+        "COLUMN3": "Yield"
+      }
+    },
+    "BLENDING": {
+      "TITLE": "Parametri di Blending",
+      "SUBTITLE": "Una parte di coloro che acquistano i Buoni 3x4 lo fa con l’intento di rimborsare a 3 anni.<br />Per questo, è necessario indicare la percentuale di blending che – appunto – descrive quanto sono numerosi coloro che acquistano il Buono 3x4 avendo però in mente un orizzonte temporale di investimento più ravvicinato."
+    },
+    "PROFILI": {
+      "TITLE": "Profili generati",
+      "SUBTITLE": "E’ possibile esportare massivamente tutti i profili di rimborso simulati",
+      "WARNING_DIALOG": "I dati saranno consolidati e non più modificabili. Sicuro di voler procedere?",
+      "STATUS": {
+        "IN_ELABORAZIONE": "Lo scenario è in elaborazione dal motore di calcolo",
+        "INVIATO": "Lo scenario è stato inviato al motore di calcolo per l'elaborazione",
+        "ERRORE": "L'elaborazione è andata in errore"
+      }
+    },
+    "TASSI": {
+      "TITLE": "Inserimento tassi",
+      "SUBTITLE": "Inserisci i rendimenti delle sottocategorie che stai simulando.<br />Puoi modificare i valori nella tabella oppure scaricare il template. Compilalo e poi caricalo a sistema.",
+      "DATA_EMISSIONE": "Data Emissione",
+      "TASSI_FIELDS": {
+        "COLUMN1": "Maturity",
+        "COLUMN2": "Tenor",
+        "COLUMN3": "Tasso nominale lordo",
+        "COLUMN4": "Tasso effettivo lordo"
+      },
+      "NOT_FOUND": "Non è stato trovato nessuno scenario tassi da visualizzare.",
+      "NOT_FOUND_BY_SUBCATEGORY": "Non è stato trovato nessuno scenario tassi per questa sottocategoria e tipo tasso da inserire."
+    },
+    "CURVE": {
+      "WARNING_DOWNLOAD": "Per la sottocategoria {{descrizione}} non è stato possibile recuperare la curva di mercato del giorno {{dataRichiesta}}.\n La curva recuperata è relativa al giorno {{dataRecuperata}}.",
+      "DIALOG": {
+        "SUBTITLE": "Sottocategoria"
+      }
+    }
+  },
+  "DATA_CREAZIONE": "Data creazione",
+  "DETTAGLIO": "Dettaglio",
+  "ERROR": {
+    "GENERIC": "E' stato riscontrato un errore",
+    "ERRORE_RIPROVA": "E' stato riscontrato un errore con il server, riprova."
+  }
+}

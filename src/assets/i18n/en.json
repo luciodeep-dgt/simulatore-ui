@@ -1,0 +1,9 @@
+{
+    "MENU": {
+        "HOME": "Dashboard",
+        "SIMULATIONS": "Simulazioni"
+    },
+    "ERROR": {
+        "GENERIC": "E' stato riscontrato un errore"
+    }
+}
