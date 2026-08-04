@@ -1,0 +1,9 @@
+<app-header *ngIf="isLoggedIn$ | async"></app-header>
+<div fxLayout="row">
+  <app-side-menu fxLayout *ngIf="isLoggedIn$ | async"></app-side-menu>
+  <div class="col col-md">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+<app-messages></app-messages>
+<ngx-ui-loader></ngx-ui-loader>

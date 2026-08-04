@@ -1,0 +1,34 @@
+p {
+    height: 2em;
+    margin-bottom: 0px;
+}
+
+li.freccia {
+    position: absolute;
+    left: 188px;
+    top: 75px;
+}
+
+.freccia-container {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    padding: 0 !important;
+
+    button {
+        background-color: transparent;
+        border: none;
+        outline: none;
+    }
+}
+
+.list-item {
+  cursor: pointer;
+}
+
+.attivo {
+    background-image: linear-gradient(to right, rgba(255,255,255,0.1), transparent);
+}
+.link-list-wrapper {
+    position: fixed;
+}

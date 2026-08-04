@@ -1,0 +1,2 @@
+<p-message class="error-panel" *ngIf="error" severity="info"
+  [text]="text || ((error && error.error) ?  error.error.message : 'Errore')"></p-message>

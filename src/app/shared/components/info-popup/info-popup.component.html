@@ -1,0 +1,39 @@
+<div style="display: flex;" (mouseover)="toggleTooltip(true)" (mouseout)="toggleTooltip(false)">
+  <svg class="icon" >
+    <use xlink:href="/assets/bootstrap-italia/dist/svg/sprite.svg#it-help-circle" [ngStyle]="{'fill': color === 'white' ? 'white' : 'blue'}"></use>
+  </svg>
+</div>
+
+<!-- tooltip box informativo effetto hover -->
+<div class="position-absolute" style="z-index: 99999999;" *ngIf="showTooltip">
+  <div class="simulazioniTooltip" style="  top: -6em; left: 8em; font-size: 16px;">
+    <table style="width: 100%" class="mb-3">
+      <tbody>
+        <tr>
+          <td class="text-left left-value">Sottocategorie:</td>
+          <td colspan="2" class="font-weight-bold">
+            {{ subcategoriesName || 'N/D'}}
+          </td>
+        </tr>
+        <tr>
+          <td class="text-left left-value">Data di pricing:</td>
+          <td colspan="2" class="font-weight-bold">
+            {{ curvesDataPricing || 'N/D'}}
+          </td>
+        </tr>
+        <tr>
+          <td class="text-left left-value">Scenari Tassi:</td>
+          <td colspan="2" class="font-weight-bold">
+            {{ cedoleDescriptions || 'N/D'}}
+          </td>
+        </tr>
+        <tr>
+          <td class="text-left left-value">Profili:</td>
+          <td colspan="2" class="font-weight-bold">
+            {{ profilesDescriptions || 'N/D'}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

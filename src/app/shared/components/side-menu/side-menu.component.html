@@ -1,0 +1,39 @@
+<div class="sidebar-wrapper blu-chiaro min-vh-100 col-auto" [@expandMenu]="isOpen" (@expandMenu.done)="animationDone($event)">
+  <div class="sidebar-linklist-wrapper" id="menuSidebar">
+    <div class="link-list-wrapper">
+      <ul class="link-list">
+        <li class="mb-3">
+          <a class="list-item medium" *ngIf="!isOpen" [@fadeInOut] (click)="toggle()">
+            <svg class="bi bi-list ml-0" width="1.5em" height="1.5em" viewBox="0 0 20 20" fill="#fff"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.5 13.5A.5.5 0 015 13h10a.5.5 0 010 1H5a.5.5 0 01-.5-.5zm0-4A.5.5 0 015 9h10a.5.5 0 010 1H5a.5.5 0 01-.5-.5zm0-4A.5.5 0 015 5h10a.5.5 0 010 1H5a.5.5 0 01-.5-.5z"
+                clip-rule="evenodd"></path>
+            </svg>
+          </a>
+        </li>
+        <li class="freccia">
+          <a class="list-item medium freccia-container" *ngIf="isOpen" [@frecciaVerde] (click)="toggle()">
+            <button><img src="/assets/bootstrap-italia/dist/img/arrow-menu.svg"></button>
+          </a>
+        </li>
+        <li *ngFor="let item of menuItems$ | async" routerLinkActive="attivo">
+            <span></span>
+            <div *ngIf="item.link !== 'sispar'">
+              <a class="list-item medium left-icon" routerLink="{{item.link}}" *ngxPermissionsOnly="item.permissions">
+                <svg class="icon" width="1.5em" height="1.5em" fill="#fff"><use attr.xlink:href="{{'/assets/bootstrap-italia/dist/svg/sprite.svg#' + item.icon}}"></use></svg>
+                <span [@menuItemAnimation]="isOpen" translate>{{ item.title }}</span>
+              </a>
+            </div>
+            <div *ngIf="item.link === 'sispar'">
+              <a class="list-item medium left-icon" href="{{item.url}}" *ngxPermissionsOnly="item.permissions"> <!-- target="_blank" -->
+                <svg class="icon" width="1.5em" height="1.5em" fill="#fff"><use attr.xlink:href="{{'/assets/bootstrap-italia/dist/svg/sprite.svg#' + item.icon}}"></use></svg>
+                <span [@menuItemAnimation]="isOpen" translate>{{ item.title }}</span>
+              </a>
+            </div>
+        </li>
+      </ul>
+    </div>
+    <div></div>
+  </div>
+</div>

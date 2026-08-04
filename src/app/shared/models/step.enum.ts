@@ -1,0 +1,13 @@
+export enum Step {
+  SUBCATEGORIES,
+  DATA_PRICING,
+  BLENDING_PARAMS,
+  CEDOLE,
+  PROFILES
+}
+
+export enum StatusStep {
+  INCOMPLETED = 'INCOMPLETED',
+  COMPLETED = 'COMPLETED',
+  CURRENT = 'CURRENT'
+}

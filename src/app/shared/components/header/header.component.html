@@ -1,0 +1,29 @@
+<div class="it-header-slim-wrapper theme-light shadow-sm">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="it-header-slim-wrapper-content">
+          <ng-container *ngIf="{ isExpanded: logoExpanded$ | async } as logo">
+            <div class="logo" [ngClass]="{ 'expanded': logo.isExpanded }">
+              <img src="/assets/bootstrap-italia/dist/img/logo_cdp_big.png" alt="">
+            </div>
+          </ng-container>
+          <p-menu #menu [popup]="true" [model]="profileItems"></p-menu>
+          <div (click)="menu.toggle($event)" style="cursor: pointer;" class="it-header-slim-right-zone">
+            <div fxLayout="row" fxLayoutAlign="start center" *ngIf="(currentUser$ | async) as currentUser">
+              <div class="avatar avatar-red">
+                <p aria-hidden="true">{{currentUser.firstName | initials}}{{currentUser.lastName | initials}}</p>
+                <span class="sr-only">{{currentUser.firstName}} {{currentUser.lastName}}</span>
+              </div>
+              <span style="width:1em;"></span>
+              <span class="user-greet">Bentornato {{ currentUser.firstName }}</span>
+              <svg class="icon" style="width:20px;height:20px;margin-top:2px;">
+                <use xlink:href="/assets/bootstrap-italia/dist/svg/sprite.svg#it-expand"></use>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
